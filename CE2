@@ -6,8 +6,15 @@ interface Loopback0
 ip address 1.1.1.5 255.255.255.255
 
 interface FastEthernet0/0
+description to-PE2
 ip address 203.0.114.2 255.255.255.252
-no shut
+no shutdown
+
+interface FastEthernet0/1
+description to-DistB1
+ip address 10.20.255.1 255.255.255.252
+no shutdown
+
 
 router bgp 65200
 bgp router-id 1.1.1.5
