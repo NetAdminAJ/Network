@@ -1,6 +1,6 @@
 enable
 conf t
-hostname PEA
+hostname PE1
 
 interface Loopback0
 ip address 1.1.1.2 255.255.255.255
@@ -15,8 +15,8 @@ no shut
 
 router bgp 65000
 bgp router-id 1.1.1.2
-neighbor 203.0.113.1 remote-as 65100     
-neighbor 198.51.100.2 remote-as 65500    
+neighbor 203.0.113.1 remote-as 65100 
+neighbor 198.51.100.2 remote-as 65500 
 
 end
 write
