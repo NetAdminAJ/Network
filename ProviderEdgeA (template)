@@ -1,22 +1,22 @@
 enable
 conf t
-hostname [NomRouter] -> à adapter
+hostname PEA
 
 interface Loopback0
- ip address 1.1.1.2 255.255.255.255
+ip address 1.1.1.2 255.255.255.255
 
 interface FastEthernet0/0
- ip address 203.0.113.2 255.255.255.252
- no shut
+ip address 203.0.113.2 255.255.255.252
+no shut
 
 interface FastEthernet0/1
- ip address 198.51.100.5 255.255.255.252
- no shut
+ip address 198.51.100.1 255.255.255.252
+no shut
 
 router bgp 65000
- bgp router-id 1.1.1.2
- neighbor 203.0.113.1 remote-as 65100
- neighbor 198.51.100.6 remote-as 65000
+bgp router-id 1.1.1.2
+neighbor 203.0.113.1 remote-as 65100     
+neighbor 198.51.100.2 remote-as 65500    
 
 end
 write
