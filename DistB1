@@ -1,0 +1,59 @@
+enable
+conf t
+hostname DistB1
+
+spanning-tree mode rapid-pvst
+
+interface range Gi0/1 - Gi0/2
+channel-group 1 mode active
+
+interface Port-channel1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+
+interface FastEthernet0/10
+no switchport
+ip address 10.20.255.2 255.255.255.252
+no shutdown
+
+interface Vlan10
+ip address 10.20.10.2 255.255.255.0
+standby 10 ip 10.20.10.1
+standby 10 priority 110
+standby 10 preempt
+
+interface Vlan20
+ip address 10.20.20.2 255.255.255.0
+standby 20 ip 10.20.20.1
+standby 20 priority 110
+standby 20 preempt
+
+interface Vlan30
+ip address 10.20.30.2 255.255.255.0
+standby 30 ip 10.20.30.1
+standby 30 priority 110
+standby 30 preempt
+
+interface Vlan40
+ip address 10.20.40.2 255.255.255.0
+standby 40 ip 10.20.40.1
+standby 40 priority 110
+standby 40 preempt
+
+ip routing
+
+ip route 0.0.0.0 0.0.0.0 10.20.255.1
+
+router ospf 1
+router-id 10.20.255.2
+network 10.20.10.0 0.0.0.255 area 0
+network 10.20.20.0 0.0.0.255 area 0
+network 10.20.30.0 0.0.0.255 area 0
+network 10.20.40.0 0.0.0.255 area 0
+network 10.20.255.0 0.0.0.3 area 0
+passive-interface default
+no passive-interface FastEthernet0/10
+
+end
+write
