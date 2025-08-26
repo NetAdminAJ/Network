@@ -25,27 +25,31 @@ interface FastEthernet0/10
 ! SVIs VLAN + HSRP
 interface Vlan10
  ip address 10.10.10.2 255.255.255.0
- standby 10 ip 10.10.10.1
+ standby 10 ip 10.10.10.254
  standby 10 priority 110
  standby 10 preempt
+ no shutdown
 
 interface Vlan20
  ip address 10.10.20.2 255.255.255.0
- standby 20 ip 10.10.20.1
+ standby 20 ip 10.10.20.254
  standby 20 priority 110
  standby 20 preempt
+ no shutdown
 
 interface Vlan30
  ip address 10.10.30.2 255.255.255.0
- standby 30 ip 10.10.30.1
+ standby 30 ip 10.10.30.254
  standby 30 priority 110
  standby 30 preempt
+ no shutdown
 
 interface Vlan40
  ip address 10.10.40.2 255.255.255.0
- standby 40 ip 10.10.40.1
+ standby 40 ip 10.10.40.254
  standby 40 priority 110
  standby 40 preempt
+ no shutdown
 
 ip routing
 ip route 0.0.0.0 0.0.0.0 10.10.255.1
