@@ -1,6 +1,6 @@
 enable
 conf t
-hostname [NomRouter] -> à adapter
+hostname PE2
 
 interface Loopback0
 ip address 1.1.1.4 255.255.255.255
