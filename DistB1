@@ -13,6 +13,7 @@ switchport mode trunk
 switchport trunk native vlan 99
 
 interface FastEthernet0/10
+description to-CE2
 no switchport
 ip address 10.20.255.2 255.255.255.252
 no shutdown
@@ -57,3 +58,4 @@ no passive-interface FastEthernet0/10
 
 end
 write
+
