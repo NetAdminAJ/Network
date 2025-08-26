@@ -1,0 +1,61 @@
+enable
+conf t
+hostname AccessB1  - AccessB2
+
+spanning-tree mode rapid-pvst
+
+! Création des VLANs
+vlan 10
+ name Users
+vlan 20
+ name Servers
+vlan 30
+ name VoIP
+vlan 40
+ name Mgmt
+vlan 99
+ name Native
+
+! Ports accès utilisateurs (VLAN10)
+interface range Fa0/1 - Fa0/12
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+! Ports serveurs (VLAN20)
+interface range Fa0/13 - Fa0/16
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+! Ports VoIP (VLAN30)
+interface range Fa0/17 - Fa0/20
+ switchport mode access
+ switchport access vlan 30
+ mls qos trust cos
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+! Ports management (VLAN40)
+interface range Fa0/21 - Fa0/24
+ switchport mode access
+ switchport access vlan 40
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+! Trunks vers distribution
+interface range Gi0/1 - Gi0/2
+ switchport mode trunk
+ switchport trunk native vlan 99
+ channel-group 1 mode active
+
+interface Port-channel1
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ no shutdown
+
+end
+write
