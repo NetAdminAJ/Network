@@ -1,19 +1,18 @@
 enable
 conf t
-hostname [NomRouter] -> à adapter
+hostname CE1  
 
 interface FastEthernet0/0
-description to-DistA1
 ip address 10.10.255.1 255.255.255.252
-no shutdown
+no shut
 
 interface FastEthernet0/1
-description to-PE1
 ip address 203.0.113.1 255.255.255.252
-no shutdown
+no shut
 
 interface Loopback0
 ip address 10.10.255.254 255.255.255.255
+
 
 router ospf 1
 router-id 10.10.255.254
@@ -22,7 +21,7 @@ passive-interface default
 no passive-interface FastEthernet0/0
 
 router bgp 65100
-bgp log-neighbor-changes
+bgp router-id 10.10.255.254
 neighbor 203.0.113.2 remote-as 65000
 
 network 10.10.10.0 mask 255.255.255.0
