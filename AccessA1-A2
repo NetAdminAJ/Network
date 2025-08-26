@@ -21,6 +21,7 @@ interface range Fa0/1 - Fa0/12
  switchport access vlan 10
  spanning-tree portfast
  spanning-tree bpduguard enable
+ no shutdown
 
 ! Ports serveurs (VLAN20)
 interface range Fa0/13 - Fa0/16
@@ -28,6 +29,7 @@ interface range Fa0/13 - Fa0/16
  switchport access vlan 20
  spanning-tree portfast
  spanning-tree bpduguard enable
+ no shutdown
 
 ! Ports VoIP (VLAN30)
 interface range Fa0/17 - Fa0/20
@@ -36,6 +38,7 @@ interface range Fa0/17 - Fa0/20
  mls qos trust cos
  spanning-tree portfast
  spanning-tree bpduguard enable
+ no shutdown
 
 ! Ports management (VLAN40)
 interface range Fa0/21 - Fa0/24
@@ -43,6 +46,7 @@ interface range Fa0/21 - Fa0/24
  switchport access vlan 40
  spanning-tree portfast
  spanning-tree bpduguard enable
+ no shutdown
 
 ! Trunks vers distribution
 interface range Gi0/1 - Gi0/2
