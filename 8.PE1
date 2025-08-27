@@ -1,5 +1,6 @@
 enable
 conf t
+
 hostname PE1
 
 interface Loopback0
